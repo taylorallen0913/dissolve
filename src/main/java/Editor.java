@@ -15,7 +15,7 @@ public class Editor extends JFrame {
         cp.add(sp);
 
         setContentPane(cp);
-        setTitle("Dissolve Demo");
+        setTitle("Dissolve Editor");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
         setLocationRelativeTo(null);
