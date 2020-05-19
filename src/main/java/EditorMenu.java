@@ -58,9 +58,30 @@ public class EditorMenu extends Editor {
             }
         });
 
+        run = new JMenuItem("Run");
+        run.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                OutputView ov;
+                try {
+                    ov = new OutputView(filePath);
+                    ov.setVisible(true);
+                } catch (InterruptedException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            }
+        });
+
         fileMenu.add(save);
         fileMenu.add(open);
 
+        editorMenu.add(run);
+
         menuBar.add(fileMenu);
+        menuBar.add(editorMenu);
     }
 }
