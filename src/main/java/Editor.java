@@ -8,24 +8,36 @@ import org.fife.ui.rsyntaxtextarea.*;
 public class Editor extends JFrame {
 
     String fileContents;
+    String filePath;
     JFrame frame;
     JPanel panel;
     EditorMenu menu;
 
+    static RSyntaxTextArea textArea;
+    RTextScrollPane sp;
+
+    public Editor() {
+    }
+
     public Editor(String filePath) throws IOException {
+        initializeEditor(filePath);
+    }
+
+    void initializeEditor(String filePath) throws IOException {
+        this.filePath = filePath;
         fileContents = FileOperations.readFile(filePath);
 
         frame = new JFrame();
         panel = new JPanel(new BorderLayout());
 
-        RSyntaxTextArea textArea = new RSyntaxTextArea(fileContents, 40, 120);
+        textArea = new RSyntaxTextArea(fileContents, 40, 120);
         textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         textArea.setCodeFoldingEnabled(true);
-        RTextScrollPane sp = new RTextScrollPane(textArea);
+        sp = new RTextScrollPane(textArea);
         panel.add(sp, BorderLayout.CENTER);
 
-        menu = new EditorMenu(filePath, textArea);
-        panel.add(menu.getMenuBar(), BorderLayout.NORTH);
+        menu = new EditorMenu(this.filePath, textArea);
+        panel.add(menu.menuBar, BorderLayout.NORTH);
 
         setContentPane(panel);
         setTitle("Dissolve Editor");
@@ -33,5 +45,11 @@ public class Editor extends JFrame {
         pack();
         setLocationRelativeTo(null);
 
+    }
+
+    void changeEditor(String filePath) throws IOException {
+        this.filePath = filePath;
+        String content = FileOperations.readFile(filePath);
+        textArea.setText(content);
     }
 }
