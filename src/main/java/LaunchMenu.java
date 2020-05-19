@@ -2,11 +2,16 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 
-public class LaunchMenu extends JFrame implements ActionListener {
+public class LaunchMenu extends JFrame {
 
     private JPanel panel;
     private JFrame frame;
+
+    private JFileChooser chooser;
+    private String filePath;
 
     private int WIDTH = 800;
     private int HEIGHT = 700;
@@ -18,6 +23,7 @@ public class LaunchMenu extends JFrame implements ActionListener {
 
         addTitle(panel);
         addCreateProjectButton(panel);
+        addOpenProjectButton(panel, frame);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(WIDTH, HEIGHT);
@@ -38,19 +44,56 @@ public class LaunchMenu extends JFrame implements ActionListener {
     }
 
     private void addCreateProjectButton(JPanel panel) {
-        JButton button = new JButton("+ Create Project");
-        button.setBounds(330, 300, 150, 50);
-        button.addActionListener(this);
-        panel.add(button);
+        JButton createProjectButton = new JButton("Create Project");
+        createProjectButton.setBounds(330, 400, 150, 50);
+        createProjectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CreateProjectView createProject = new CreateProjectView();
+                createProject.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                createProject.setSize(400, 400);
+                createProject.setLocationRelativeTo(null);
+                createProject.setVisible(true);
+                frame.dispose();
+            }
+        });
+
+        panel.add(createProjectButton);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        CreateProjectView createProject = new CreateProjectView();
-        createProject.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        createProject.setSize(400, 400);
-        createProject.setLocationRelativeTo(null);
-        createProject.setVisible(true);
+    private void addOpenProjectButton(JPanel panel, JFrame frame) {
+        JButton openProjectButton = new JButton("Open Project");
+        openProjectButton.setBounds(330, 500, 150, 50);
+        openProjectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String userDir = System.getProperty("user.home");
+                chooser = new JFileChooser(userDir + "/Desktop");
+                chooser.setDialogTitle("Select a file to open");
+                chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                chooser.setAcceptAllFileFilterUsed(true);
+                if (chooser.showOpenDialog(openProjectButton) == JFileChooser.APPROVE_OPTION) {
+                    filePath = chooser.getSelectedFile().toString();
+                    try {
+                        openProject(frame, filePath);
+                    } catch (IOException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("No Selection ");
+                }
+            }
+        });
+
+        panel.add(openProjectButton);
+    }
+
+    private static void openProject(JFrame frame, String filePath) throws IOException {
+        String fileContents = OpenFile.readFile(filePath);
+        Editor editor = new Editor(filePath, fileContents);
+        editor.setVisible(true);
         frame.dispose();
     }
+
 }

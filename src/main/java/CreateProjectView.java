@@ -18,13 +18,12 @@ public class CreateProjectView extends JFrame {
 
     private JFileChooser chooser;
 
+    private String projectLocation;
+
     private final CardLayout cl = new CardLayout();
     private final JPanel cards = new JPanel(cl);
 
-    private int currentCardNumber;
-
     public CreateProjectView() {
-        currentCardNumber = 0;
         JPanel contentPane = new JPanel();
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
         contentPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -48,13 +47,12 @@ public class CreateProjectView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String userDir = System.getProperty("user.home");
-                chooser = new JFileChooser(userDir + "/Desktop");
+                chooser = new JFileChooser(userDir);
                 chooser.setDialogTitle("Select a directory to set as your workspace location");
                 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                chooser.setAcceptAllFileFilterUsed(false);
+                chooser.setAcceptAllFileFilterUsed(true);
                 if (chooser.showOpenDialog(locationSelector) == JFileChooser.APPROVE_OPTION) {
-                    System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
-                    System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+                    projectLocation = chooser.getSelectedFile().toString();
                 } else {
                     System.out.println("No Selection ");
                 }
@@ -64,12 +62,26 @@ public class CreateProjectView extends JFrame {
         locationPanel.add(locationSelector);
         cards.add(locationPanel, "Location Panel");
 
+        JPanel createProjectPanel = new JPanel();
+        JButton createProjectButton = new JButton("Create Project");
+        createProjectPanel.add(createProjectButton);
+        cards.add(createProjectPanel, "Create Project Panel");
+
+        createProjectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String projectName = nameInput.getText();
+                CreateProject createProject = new CreateProject(projectName, projectLocation);
+                EditorLoading editorLoading = new EditorLoading(createProject);
+                editorLoading.setVisible(true);
+                dispose();
+            }
+        });
+
         JButton backButton = new JButton("Back");
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (currentCardNumber != 0)
-                    currentCardNumber--;
                 cl.previous(cards);
             }
         });
@@ -78,7 +90,6 @@ public class CreateProjectView extends JFrame {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentCardNumber++;
                 cl.next(cards);
             }
         });
@@ -93,4 +104,5 @@ public class CreateProjectView extends JFrame {
 
         cl.show(cards, "Name Panel");
     }
+
 }

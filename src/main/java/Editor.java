@@ -1,16 +1,15 @@
 import javax.swing.*;
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
 
 public class Editor extends JFrame {
-    public Editor() {
+    public Editor(String filePath, String fileContents) {
 
         JPanel cp = new JPanel(new BorderLayout());
 
-        RSyntaxTextArea textArea = new RSyntaxTextArea(40, 120);
+        RSyntaxTextArea textArea = new RSyntaxTextArea(fileContents, 40, 120);
         textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         textArea.setCodeFoldingEnabled(true);
         RTextScrollPane sp = new RTextScrollPane(textArea);
