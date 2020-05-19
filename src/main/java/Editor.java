@@ -18,15 +18,14 @@ public class Editor extends JFrame {
         frame = new JFrame();
         panel = new JPanel(new BorderLayout());
 
-        menu = new EditorMenu();
-
-        panel.add(menu.getMenuBar(), BorderLayout.NORTH);
-
         RSyntaxTextArea textArea = new RSyntaxTextArea(fileContents, 40, 120);
         textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         textArea.setCodeFoldingEnabled(true);
         RTextScrollPane sp = new RTextScrollPane(textArea);
         panel.add(sp, BorderLayout.CENTER);
+
+        menu = new EditorMenu(filePath, textArea);
+        panel.add(menu.getMenuBar(), BorderLayout.NORTH);
 
         setContentPane(panel);
         setTitle("Dissolve Editor");

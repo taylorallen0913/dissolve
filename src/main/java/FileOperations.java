@@ -18,4 +18,10 @@ public class FileOperations {
 
         return fileContents;
     }
+
+    public static void writeToFile(String filePath, String content) throws IOException {
+        FileWriter fw = new FileWriter(filePath);
+        fw.write(content);
+        fw.close();
+    }
 }
