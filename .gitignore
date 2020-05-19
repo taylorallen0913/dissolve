@@ -21,6 +21,12 @@
 *.tar.gz
 *.rar
 
+# VSCode
+.vscode
+
+# Eclipse
+.setting
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
@@ -35,3 +41,8 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+.project
+.classpath
+
+# Mac
+.DS_Store
