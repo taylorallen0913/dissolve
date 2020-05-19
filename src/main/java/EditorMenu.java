@@ -62,6 +62,14 @@ public class EditorMenu extends Editor {
         run.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Save first
+
+                try {
+                    FileOperations.writeToFile(filePath, textArea.getText());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
                 OutputView ov;
                 try {
                     ov = new OutputView(filePath);
