@@ -2,12 +2,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-
 import javax.swing.*;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
 
+/**
+ * This is the window the appears when you compile and run your project. It
+ * shows the output of your code's execution.
+ * 
+ * @author Taylor Allen
+ */
 public class OutputView extends JFrame {
 
     static String displayContent;

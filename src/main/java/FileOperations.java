@@ -1,5 +1,11 @@
 import java.io.*;
 
+/**
+ * This is a utility class utilized to do common file operations that is needed
+ * for the editor.
+ * 
+ * @author Taylor Allen
+ */
 public class FileOperations {
 
     public static String readFile(String filePath) throws IOException {

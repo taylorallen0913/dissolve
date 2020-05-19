@@ -1,10 +1,14 @@
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.io.IOException;
-
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
 
+/**
+ * This is an editor window.
+ * 
+ * @author Taylor Allen
+ */
 public class Editor extends JFrame {
 
     String fileContents;

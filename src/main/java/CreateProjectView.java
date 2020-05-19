@@ -1,19 +1,22 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 
+/**
+ * This is the module to create a new project. It gets input of the user's
+ * project name and project workspace location.
+ * 
+ * @author Taylor Allen
+ */
 public class CreateProjectView extends JFrame {
 
     private JFileChooser chooser;

@@ -1,11 +1,14 @@
 import javax.swing.*;
-
-import java.awt.MenuBar;
 import java.awt.event.*;
 import java.io.IOException;
-
 import org.fife.ui.rsyntaxtextarea.*;
 
+/**
+ * This is the top menu for the editor. It includes features such as saving,
+ * opening, compiling, and running files.
+ * 
+ * @author Taylor Allen
+ */
 public class EditorMenu extends Editor {
     JPanel panel;
     JMenuBar menuBar;

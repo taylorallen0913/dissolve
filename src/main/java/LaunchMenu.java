@@ -2,9 +2,13 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.File;
 import java.io.IOException;
 
+/**
+ * This is the starting menu for the editor.
+ * 
+ * @author Taylor Allen
+ */
 public class LaunchMenu extends JFrame {
 
     private JPanel panel;

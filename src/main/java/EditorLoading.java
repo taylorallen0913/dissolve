@@ -3,9 +3,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.*;
-
 import javax.swing.*;
 
+/**
+ * This is the screen to initialize an editor instance after a project is
+ * created.
+ * 
+ * @author Taylor Allen
+ */
 public class EditorLoading extends JFrame {
 
     static JPanel panel;
