@@ -89,8 +89,7 @@ public class LaunchMenu extends JFrame {
     }
 
     private static void openProject(JFrame frame, String filePath) throws IOException {
-        String fileContents = FileOperations.readFile(filePath);
-        Editor editor = new Editor(filePath, fileContents);
+        Editor editor = new Editor(filePath);
         editor.setVisible(true);
         frame.dispose();
     }
