@@ -54,7 +54,7 @@ public class EditorLoading extends JFrame {
         try {
             FileWriter main = new FileWriter(projectLocation + "/" + projectName + "/src/Main.java");
             main.write(
-                    "public class Main() {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println(\"Hello World!\");\n\t}\n}");
+                    "public class Main {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println(\"Hello World!\");\n\t}\n}");
             main.close();
             addToDisplay("Finished writing to main file");
         } catch (IOException e) {

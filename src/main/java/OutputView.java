@@ -24,7 +24,7 @@ public class OutputView extends JFrame {
         panel = new JPanel();
         panel.setLayout(new BorderLayout());
         display = new JTextPane();
-        // display.setEditable(false);
+        display.setEditable(false);
         scroll = new JScrollPane(display);
 
         panel.add(scroll);
@@ -48,6 +48,7 @@ public class OutputView extends JFrame {
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
         while ((line = reader.readLine()) != null) {
+            System.out.println(line);
             setDisplay(line);
         }
     }
