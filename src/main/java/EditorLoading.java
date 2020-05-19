@@ -4,10 +4,8 @@ public class EditorLoading extends JFrame {
 
     JPanel panel;
     JFrame frame;
-    CreateProject project;
 
-    public EditorLoading(CreateProject project) {
-        this.project = project;
+    public EditorLoading(String projectName, String projectLocation) {
 
         panel = new JPanel();
         frame = new JFrame();
@@ -18,6 +16,10 @@ public class EditorLoading extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 200);
         setLocationRelativeTo(null);
+    }
+
+    private void createProject(String projectName, String projectLocation) {
+
     }
 
     private void loadingFinished() {

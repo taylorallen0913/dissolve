@@ -71,8 +71,7 @@ public class CreateProjectView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String projectName = nameInput.getText();
-                CreateProject createProject = new CreateProject(projectName, projectLocation);
-                EditorLoading editorLoading = new EditorLoading(createProject);
+                EditorLoading editorLoading = new EditorLoading(projectName, projectLocation);
                 editorLoading.setVisible(true);
                 dispose();
             }

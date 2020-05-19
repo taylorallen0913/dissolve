@@ -77,7 +77,6 @@ public class LaunchMenu extends JFrame {
                     try {
                         openProject(frame, filePath);
                     } catch (IOException e1) {
-                        // TODO Auto-generated catch block
                         e1.printStackTrace();
                     }
                 } else {
@@ -90,7 +89,7 @@ public class LaunchMenu extends JFrame {
     }
 
     private static void openProject(JFrame frame, String filePath) throws IOException {
-        String fileContents = OpenFile.readFile(filePath);
+        String fileContents = FileOperations.readFile(filePath);
         Editor editor = new Editor(filePath, fileContents);
         editor.setVisible(true);
         frame.dispose();

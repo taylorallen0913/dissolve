@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class OpenFile {
+public class FileOperations {
 
     public static String readFile(String filePath) throws IOException {
         String fileContents = "";
