@@ -22,7 +22,7 @@
 *.rar
 
 # VSCode
-.vscode
+.vscode/
 
 # Eclipse
 .setting
