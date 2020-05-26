@@ -55,8 +55,6 @@ public class EditorMenu extends Editor {
                         e1.printStackTrace();
                     }
 
-                } else {
-                    System.out.println("No Selection ");
                 }
             }
         });

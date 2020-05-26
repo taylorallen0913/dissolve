@@ -83,8 +83,6 @@ public class LaunchMenu extends JFrame {
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
-                } else {
-                    System.out.println("No Selection ");
                 }
             }
         });

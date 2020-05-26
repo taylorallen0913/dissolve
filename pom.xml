@@ -3,15 +3,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.taylorallen.csaproject</groupId>
-  <artifactId>csaproject</artifactId>
+  <groupId>com.taylorallen.dissolve</groupId>
+  <artifactId>dissolve</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>csaproject</name>
+  <name>dissolve</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
   <properties>
+    <exec.mainClass>Dissolve</exec.mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -24,6 +25,7 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fifesoft/rsyntaxtextarea -->
     <dependency>
       <groupId>com.fifesoft</groupId>
       <artifactId>rsyntaxtextarea</artifactId>

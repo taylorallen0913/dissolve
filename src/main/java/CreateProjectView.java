@@ -56,8 +56,6 @@ public class CreateProjectView extends JFrame {
                 chooser.setAcceptAllFileFilterUsed(true);
                 if (chooser.showOpenDialog(locationSelector) == JFileChooser.APPROVE_OPTION) {
                     projectLocation = chooser.getSelectedFile().toString();
-                } else {
-                    System.out.println("No Selection ");
                 }
             }
         });
